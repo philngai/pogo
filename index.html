@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Copy GPS Coordinates</title>
+</head>
+<body>
+    <p>Coordinates: <span id="coords-display">Loading...</span></p>
+
+    <script>
+        // Grab coords from URL, default if empty
+        const coords = window.location.search.substring(1) || '40.7128, -74.0060';
+        document.getElementById('coords-display').textContent = coords;
+
+        // Copy to clipboard silently
+        navigator.clipboard.writeText(coords)
+            .catch(err => console.error('Failed to copy: ', err));
+    </script>
+</body>
+</html>
